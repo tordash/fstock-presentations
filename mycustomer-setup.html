@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyCustomer CRM Setup Guide</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: "Sarabun", -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #ffffff; color: #111827; overflow: hidden; }
+        .presentation { width: 100vw; height: 100vh; }
+        .slide { width: 100%; height: 100%; position: absolute; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.8s; padding: 60px 80px; text-align: center; }
+        .slide.active { opacity: 1; z-index: 10; }
+        h1 { font-size: 56px; font-weight: 700; margin-bottom: 24px; }
+        h2 { font-size: 36px; font-weight: 600; margin-bottom: 32px; color: #1f2937; }
+        .subtitle { font-size: 24px; color: #6b7280; margin-bottom: 48px; }
+        .content { font-size: 18px; line-height: 1.8; max-width: 900px; text-align: left; }
+        .content ul { list-style: none; }
+        .content li { margin: 12px 0; padding-left: 32px; position: relative; }
+        .content li:before { content: "▪"; position: absolute; left: 0; color: #3b82f6; font-size: 20px; }
+        .controls { position: fixed; bottom: 40px; right: 40px; display: flex; gap: 16px; z-index: 100; }
+        button { background: #3b82f6; color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600; }
+        button:hover { background: #2563eb; }
+        .slide-counter { position: fixed; bottom: 40px; left: 40px; font-size: 14px; color: #6b7280; }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        <div id="slides">
+            <div class="slide active"><h1>🔧 MyCustomer CRM Setup</h1><p class="subtitle">9 Steps to Launch</p></div>
+            <div class="slide"><h2>What We're Building</h2><div class="content"><ul><li>✅ MyCustomer CRM account (฿369/month)</li><li>✅ Signup form (5 fields)</li><li>✅ Point system (5 points = 1 free water)</li><li>✅ Rich Menu in LINE OA (@foodstock)</li><li>✅ Automated broadcast messages</li></ul></div></div>
+            <div class="slide"><h2>Step 1: Create Account (Feb 9-10)</h2><div class="content"><ul><li>1. Go to: https://www.mycustomer.net</li><li>2. Click "Sign Up"</li><li>3. Choose: Standard Package (฿369/month)</li><li>4. Fill in: Name, Email, Password, Phone</li><li>5. Accept terms & sign up</li><li>6. Verify email & activate account</li><li>⏱️ Time: 10 minutes</li></ul></div></div>
+            <div class="slide"><h2>Step 2: Basic Settings (Feb 10)</h2><div class="content"><ul><li>✅ Connect LINE Official Account → Settings → Channel → LINE → Authorize @foodstock access</li><li>✅ Set Default Team & Admin → Settings → Team → Add yourself</li><li>✅ Set Business Hours → Settings → Business Hours → 08:00 - 22:00 (daily) → Timezone: Bangkok (UTC+7)</li><li>⏱️ Time: 5-10 minutes</li></ul></div></div>
+            <div class="slide"><h2>Step 3: Create Signup Form</h2><div class="content"><ul><li>📋 New Form: "Food Stock Member Signup"</li><li>5 Required Fields:</li><li style="margin-left: 20px;">1. Name — Required</li><li style="margin-left: 20px;">2. Phone — Required</li><li style="margin-left: 20px;">3. Email — Optional</li><li style="margin-left: 20px;">4. Customer Type — Required</li><li style="margin-left: 20px;">5. Preferred Shops — Optional</li></ul></div></div>
+            <div class="slide"><h2>Step 4: Point System</h2><div class="content"><ul><li>Enable Points Module: Settings → Features → Points System</li><li>Currency name: "Points"</li><li>Display: "Food Stock Rewards"</li><li>Expiry: 90 days from earn date</li><li><strong>Rule 1:</strong> Welcome Bonus: Signup = +5 points</li><li><strong>Rule 2:</strong> Survey Bonus: Complete = +2 points</li><li><strong>Rule 3:</strong> Redemption: 5 points = 1 free water</li></ul></div></div>
+            <div class="slide"><h2>Step 5: LINE Rich Menu</h2><div class="content"><ul><li>🎯 Purpose: Greet customers with intent detection</li><li>🎯 Platform: LINE Official Account @foodstock</li><li>🎯 Layout: 2 buttons</li><li style="margin-left: 20px;">1. "Tenant Visitor"</li><li style="margin-left: 20px;">2. "General Visitor"</li><li>⏱️ Time: 10 minutes</li></ul></div></div>
+            <div class="slide"><h2>Step 6: Broadcast Messages</h2><div class="content"><ul><li>3 Pre-Planned Messages:</li><li>1️⃣ Welcome Message (auto-triggered on signup)</li><li>2️⃣ Survey Invitation (Feb 13, 2:00 PM manual)</li><li>3️⃣ Redemption Reminder (Feb 14, 5:00 PM manual)</li><li>✅ All templates saved & ready to send</li></ul></div></div>
+            <div class="slide"><h2>Step 7: Staff Training (Feb 11)</h2><div class="content"><ul><li>👥 Train Food Stock staff on:</li><li style="margin-left: 20px;">1. How to explain signup process</li><li style="margin-left: 20px;">2. How to use QR code for redemptions</li><li style="margin-left: 20px;">3. How to access MyCustomer dashboard</li><li style="margin-left: 20px;">4. How to manually input point redemptions</li><li style="margin-left: 20px;">5. Daily reporting procedures</li><li>⏱️ Training: 1 hour session</li></ul></div></div>
+            <div class="slide"><h2>Redemption Process (Manual)</h2><div class="content"><ul><li>When customer comes to Refill Station:</li><li>1️⃣ Customer: "Redeem free water"</li><li>2️⃣ Staff: "Are you a Food Stock member?"</li><li>3️⃣ If YES: Scan QR → MyCustomer → Manual entry → -5 points → Give 1 free water</li><li>4️⃣ If NO: Explain signup process & give QR poster</li></ul></div></div>
+            <div class="slide"><h2>Step 8: Testing (Feb 11)</h2><div class="content"><ul><li>🧪 Test Full Signup Flow → Add @foodstock, see Rich Menu, Click button, Fill form, Check: 5 points awarded</li><li>🧪 Test Redemption → Manual entry in MyCustomer, Verify points deducted, Check history shows transaction</li><li>🧪 Test Broadcast → Send test message to self, Verify arrives on LINE within 1 min</li><li>⏱️ Time: 30 minutes</li></ul></div></div>
+            <div class="slide"><h2>Step 9: Daily Monitoring</h2><div class="content"><ul><li>📊 Check Daily (EOD 6:00 PM):</li><li>• New members today</li><li>• Cumulative total members</li><li>• Redemptions today</li><li>• Cumulative redemptions</li><li>• Survey submissions</li><li>• Engagement rate</li></ul></div></div>
+            <div class="slide"><h2>Completion Checklist</h2><div class="content"><ul><li><strong>By Feb 10:</strong> Account • LINE OA • Form • Points rules • Rich Menu</li><li><strong>By Feb 11:</strong> Broadcasts • Full flow tested • Staff trained • Go/No-Go decision</li><li><strong>Status: READY FOR LAUNCH FEB 12 ✅</strong></li></ul></div></div>
+            <div class="slide"><h2>Emergency Contacts</h2><div class="content"><ul><li>📞 System Issues → MyCustomer Support (08:00-18:00)</li><li>📞 Technical Problems → คุณต่อ (08:00-22:00)</li><li>📞 Billing → support@mycustomer.net</li><li>📞 Creative Issues → @content-strategist</li></ul></div></div>
+            <div class="slide"><h1>🚀 Ready to Setup?</h1><p class="subtitle">✅ Setup 30 min | ✅ Configuration 1 hour | ✅ Testing 30 min</p></div>
+        </div>
+    </div>
+    <div class="slide-counter"><span id="current">1</span> / <span id="total">14</span></div>
+    <div class="controls"><button onclick="previousSlide()">← Previous</button><button onclick="nextSlide()">Next →</button></div>
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        function showSlide(n) { slides.forEach(s => s.classList.remove('active')); slides[n].classList.add('active'); document.getElementById('current').textContent = n + 1; }
+        function nextSlide() { currentSlide = (currentSlide + 1) % slides.length; showSlide(currentSlide); }
+        function previousSlide() { currentSlide = (currentSlide - 1 + slides.length) % slides.length; showSlide(currentSlide); }
+        document.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight' || e.key === ' ') nextSlide(); if (e.key === 'ArrowLeft') previousSlide(); });
+    </script>
+</body>
+</html>

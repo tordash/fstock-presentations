@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Strategist Brief</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: "Sarabun", -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: linear-gradient(135deg, #0a0b14 0%, #151828 100%); color: #ffffff; overflow: hidden; }
+        .presentation { width: 100vw; height: 100vh; }
+        .slide { width: 100%; height: 100%; position: absolute; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.8s; padding: 60px 80px; text-align: center; }
+        .slide.active { opacity: 1; z-index: 10; }
+        h1 { font-size: 56px; font-weight: 700; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 24px; }
+        h2 { font-size: 36px; font-weight: 600; color: #b8bdf0; margin-bottom: 32px; }
+        .subtitle { font-size: 24px; color: #9ca3af; margin-bottom: 48px; }
+        .content { font-size: 18px; line-height: 1.8; max-width: 900px; text-align: left; }
+        .content ul { list-style: none; }
+        .content li { margin: 12px 0; padding-left: 32px; position: relative; }
+        .content li:before { content: "▸"; position: absolute; left: 0; color: #3b82f6; font-size: 24px; font-weight: bold; }
+        .controls { position: fixed; bottom: 40px; right: 40px; display: flex; gap: 16px; z-index: 100; }
+        button { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600; }
+        button:hover { transform: translateY(-2px); }
+        .slide-counter { position: fixed; bottom: 40px; left: 40px; font-size: 14px; color: #9ca3af; }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        <div id="slides">
+            <div class="slide active"><h1>📧 Content Strategist Brief</h1><p class="subtitle">Campaign A/W — 6 Creative Assets</p></div>
+            <div class="slide"><h2>Your Mission</h2><div class="content"><ul><li>✅ Create 6 creative assets</li><li>✅ Drive LINE OA signup</li><li>✅ Promote instant free water reward</li><li>⏱️ Deadline: Feb 13, 2026 (EOD)</li><li>🎯 Success: Print-ready, on-brand, scannable QR codes</li></ul></div></div>
+            <div class="slide"><h2>The 6 Assets</h2><div class="content"><ul><li>1️⃣ QR Poster (print A3/A4 + digital)</li><li>2️⃣ Table Tent (counter display A5)</li><li>3️⃣ Facebook Post (1200x628px)</li><li>4️⃣ Instagram Carousel (5 slides)</li><li>5️⃣ Instagram Reel (15-30 seconds)</li><li>6️⃣ TikTok Video (30-60 seconds, optional)</li></ul></div></div>
+            <div class="slide"><h2>Asset 1: QR Poster</h2><div class="content"><ul><li>📌 Size: A3 (297×420mm) or A4 (210×297mm)</li><li>📌 Resolution: 300 DPI (for print)</li><li>📌 QR Code: Minimum 5cm × 5cm</li><li>📌 Color: LINE Green (#00B900) primary</li><li>📌 Message: "Add LINE → Get free water" + "@foodstock"</li><li>📌 Deliver: PDF A3 + PDF A4 + PNG digital + PSD</li></ul></div></div>
+            <div class="slide"><h2>Asset 2: Table Tent</h2><div class="content"><ul><li>📌 Fold A5 (148×210mm), 300 DPI</li><li>📌 Glossy cardstock (laminated)</li><li>📌 QR Code: 3cm × 3cm</li><li>📌 Bilingual: Thai + English</li><li>📌 Placement: Refill Station counters</li><li>📌 Deliver: Print-ready PDF + PNG sample</li></ul></div></div>
+            <div class="slide"><h2>Asset 3: Facebook Post</h2><div class="content"><ul><li>📌 1200 × 628px, PNG/JPG, <100KB</li><li>📌 Hero image: Food + water + Valentine vibes</li><li>📌 CTA centered: "Scan QR Now"</li><li>📌 Colors: LINE Green + white + gold</li><li>📌 Copy: "🎉 Food Stock Member" + offer</li><li>📌 Deliver: PNG + PSD + caption text</li></ul></div></div>
+            <div class="slide"><h2>Asset 4: Instagram Carousel</h2><div class="content"><ul><li>📌 5 slides, 1080 × 1350px each</li><li>Story Arc:</li><li style="margin-left: 20px;">Slide 1: Hook "Welcome 🎉"</li><li style="margin-left: 20px;">Slide 2: Value "5 points = free water"</li><li style="margin-left: 20px;">Slide 3: How-to "3 easy steps"</li><li style="margin-left: 20px;">Slide 4: Benefits "Member perks"</li><li style="margin-left: 20px;">Slide 5: CTA "@foodstock Scan now!"</li></ul></div></div>
+            <div class="slide"><h2>Asset 5: Instagram Reel</h2><div class="content"><ul><li>📌 1080 × 1920px, 15-30 sec, MP4, 30fps</li><li>Story (0-30 seconds):</li><li style="margin-left: 20px;">0-3: Close-up water glass</li><li style="margin-left: 20px;">3-8: Customer confused "What?"</li><li style="margin-left: 20px;">8-15: Scan QR → "@foodstock"</li><li style="margin-left: 20px;">15-25: Gets free water, happy reaction</li><li style="margin-left: 20px;">25-30: CTA "Add LINE now!"</li><li>📌 Audio: Upbeat, no royalties needed (100-120 BPM)</li></ul></div></div>
+            <div class="slide"><h2>Asset 6: TikTok Video</h2><div class="content"><ul><li>📌 1080 × 1920px, 30-60 sec, MP4, 30fps</li><li>📌 Hook: "Get it free! 🎉"</li><li>📌 Show: Food Stock + signup method</li><li>📌 Reveal: Reward → CTA + hashtags</li><li>📌 TikTok tips: Trending audio, captions, hashtags</li><li>📌 Best time: 18:00-21:00 (peak engagement)</li></ul></div></div>
+            <div class="slide"><h2>Design System: Colors</h2><div class="content"><ul><li>🎨 Primary: LINE Green (#00B900) → CTA</li><li>🎨 Secondary: White (#FFFFFF) → Background</li><li>🎨 Text: Black (#1A1A1A) → Headlines</li><li>🎨 Accent: Gold (#FFB800) → Valentine theme</li><li>🎨 Light: Light Gray (#F5F5F5) → Secondary BG</li></ul></div></div>
+            <div class="slide"><h2>Design System: Typography</h2><div class="content"><ul><li>📝 Headlines: Inter Bold, Kanit Bold (Thai), 24-48px</li><li>📝 Body: Inter Regular, Sarabun Regular, 14-18px</li><li>📝 CTA: Inter Bold, 16-20px</li><li>📝 Style: Modern, clean, minimal</li><li>📝 Mobile-first approach</li><li>📝 High contrast (QR scannable)</li></ul></div></div>
+            <div class="slide"><h2>Copy Guidelines</h2><div class="content"><ul><li>✅ Thai + English for all assets</li><li>✅ Benefit-focused messaging</li><li>✅ Urgent but warm tone</li><li>✅ Clear CTA ("Scan now!", "Add today!")</li><li>✅ Valentine campaign theme (Feb 9-15)</li><li>✅ LINE OA: @foodstock</li><li>✅ Link: https://lin.ee/2KSEPfn</li></ul></div></div>
+            <div class="slide"><h2>Timeline</h2><div class="content"><ul><li>📅 Feb 9: Start designing immediately</li><li>📅 Feb 10 (10:00): Submit drafts for review #1</li><li>📅 Feb 12 (EOD): All assets approved & final</li><li>📅 Feb 13 (EOD): Final delivery (print-ready)</li><li>📅 Feb 13-14: Print & install</li><li>📅 Feb 14: Go live on social media</li></ul></div></div>
+            <div class="slide"><h2>Quality Checklist</h2><div class="content"><ul><li>✅ All 6 assets included</li><li>✅ QR codes tested & scannable</li><li>✅ High resolution: 300 DPI (print)</li><li>✅ Social files: sRGB, <100KB</li><li>✅ Videos: MP4, H.264 codec</li><li>✅ No typos (@foodstock correct)</li><li>✅ Brand colors match hex codes</li><li>✅ Source files included</li></ul></div></div>
+            <div class="slide"><h2>Questions & Communication</h2><div class="content"><ul><li>❓ Ask immediately — don't overthink!</li><li>📞 Main contact:</li><li style="margin-left: 20px;">• Project Owner: คุณต่อ</li><li style="margin-left: 20px;">• For brand: See DESIGN-SYSTEM.md</li><li style="margin-left: 20px;">• For tech: See FSTOCK-CRM-IMPLEMENTATION-PLAN.md</li></ul></div></div>
+            <div class="slide"><h2>Important Notes</h2><div class="content"><ul><li>⚠️ Timeline is TIGHT (5 days)</li><li>⚠️ High priority for Food Stock</li><li>⚠️ Quality directly impacts signup rate</li><li>⚠️ Start Feb 9 immediately!</li><li>✅ You have all requirements</li><li>✅ Ask questions early, not late</li></ul></div></div>
+            <div class="slide"><h1>🎨 Let's Create!</h1><p class="subtitle">Brief ready • Specs ready • Timeline ready</p></div>
+        </div>
+    </div>
+    <div class="slide-counter"><span id="current">1</span> / <span id="total">15</span></div>
+    <div class="controls"><button onclick="previousSlide()">← Previous</button><button onclick="nextSlide()">Next →</button></div>
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        function showSlide(n) { slides.forEach(s => s.classList.remove('active')); slides[n].classList.add('active'); document.getElementById('current').textContent = n + 1; }
+        function nextSlide() { currentSlide = (currentSlide + 1) % slides.length; showSlide(currentSlide); }
+        function previousSlide() { currentSlide = (currentSlide - 1 + slides.length) % slides.length; showSlide(currentSlide); }
+        document.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight' || e.key === ' ') nextSlide(); if (e.key === 'ArrowLeft') previousSlide(); });
+    </script>
+</body>
+</html>
