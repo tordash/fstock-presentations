@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The $4 Trillion Moat - Claude Code Revolution</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #f5f5f0 0%, #e8e8e3 100%);
+            overflow: hidden;
+            color: #1d1d1f;
+            height: 100vh;
+            position: relative;
+        }
+
+        .presentation-container {
+            display: flex;
+            height: 100vh;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+        }
+
+        .slide {
+            min-width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px;
+            position: relative;
+        }
+
+        .slide > * {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .slide.active > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger the animations */
+        .slide.active > *:nth-child(1) { transition-delay: 0.1s; }
+        .slide.active > *:nth-child(2) { transition-delay: 0.2s; }
+        .slide.active > *:nth-child(3) { transition-delay: 0.3s; }
+        .slide.active > *:nth-child(4) { transition-delay: 0.4s; }
+        .slide.active > *:nth-child(5) { transition-delay: 0.5s; }
+        .slide.active > *:nth-child(6) { transition-delay: 0.6s; }
+
+        h1 {
+            font-size: 72px;
+            font-weight: 700;
+            line-height: 1.1;
+            text-align: center;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #1d1d1f 0%, #515154 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 48px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #1d1d1f;
+        }
+
+        h3 {
+            font-size: 32px;
+            font-weight: 500;
+            text-align: center;
+            color: #6e6e73;
+            margin-bottom: 40px;
+        }
+
+        .pill {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1), 0 1px 8px rgba(0,0,0,0.1);
+            animation: float 3s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+
+        .pill-primary {
+            background: linear-gradient(135deg, #5856d6 0%, #af52de 100%);
+            color: white;
+        }
+
+        .pill-danger {
+            background: linear-gradient(135deg, #ff3b30 0%, #ff6b6b 100%);
+            color: white;
+        }
+
+        .pill-success {
+            background: linear-gradient(135deg, #34c759 0%, #30d158 100%);
+            color: white;
+        }
+
+        .pill-warning {
+            background: linear-gradient(135deg, #ff9500 0%, #ffb143 100%);
+            color: white;
+        }
+
+        .pill-info {
+            background: linear-gradient(135deg, #007aff 0%, #5ac8fa 100%);
+            color: white;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(88, 86, 214, 0.3), 0 0 40px rgba(88, 86, 214, 0.1);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(88, 86, 214, 0.5), 0 0 60px rgba(88, 86, 214, 0.2);
+            }
+        }
+
+        .stat-container {
+            display: flex;
+            gap: 60px;
+            margin-top: 60px;
+        }
+
+        .stat-box {
+            background: white;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            text-align: center;
+            min-width: 250px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 18px;
+            color: #6e6e73;
+        }
+
+        .comparison-container {
+            display: flex;
+            gap: 80px;
+            align-items: center;
+            margin-top: 60px;
+        }
+
+        .comparison-side {
+            text-align: center;
+        }
+
+        .vs-circle {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ff3b30 0%, #ff6b6b 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 24px;
+            box-shadow: 0 10px 30px rgba(255, 59, 48, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .quote-box {
+            background: white;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            max-width: 800px;
+            margin: 40px auto;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 40px;
+            font-size: 120px;
+            color: #5856d6;
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+
+        .quote-text {
+            font-size: 28px;
+            line-height: 1.5;
+            color: #1d1d1f;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .quote-author {
+            font-size: 18px;
+            color: #6e6e73;
+            text-align: right;
+        }
+
+        .timeline {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 60px;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff3b30 0%, #34c759 100%);
+            z-index: 0;
+        }
+
+        .slide.active .timeline::before {
+            animation: expandWidth 1s ease-out 0.3s both;
+        }
+
+        @keyframes expandWidth {
+            from {
+                transform: scaleX(0);
+            }
+            to {
+                transform: scaleX(1);
+            }
+        }
+
+        .timeline-item {
+            position: relative;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .timeline-dot {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border: 4px solid #5856d6;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            box-shadow: 0 10px 25px rgba(88, 86, 214, 0.2);
+        }
+
+        .timeline-label {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 10px;
+        }
+
+        .timeline-desc {
+            font-size: 14px;
+            color: #6e6e73;
+        }
+
+        .chart-container {
+            width: 900px;
+            height: 400px;
+            margin: 40px auto;
+            position: relative;
+        }
+
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            height: 100%;
+            padding: 20px;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .bar {
+            width: 120px;
+            background: linear-gradient(135deg, #ff3b30 0%, #ff9500 100%);
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 20px;
+            color: white;
+            font-weight: 600;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .bar.positive {
+            background: linear-gradient(135deg, #34c759 0%, #30d158 100%);
+        }
+
+        .bar.primary {
+            background: linear-gradient(135deg, #5856d6 0%, #af52de 100%);
+        }
+
+        .slide.active .bar {
+            animation: barGrow 1s ease-out 0.5s both;
+        }
+
+        @keyframes barGrow {
+            from {
+                transform: scaleY(0);
+                transform-origin: bottom;
+            }
+            to {
+                transform: scaleY(1);
+            }
+        }
+
+        .bar-value {
+            position: absolute;
+            top: -40px;
+            font-size: 24px;
+            font-weight: 700;
+            color: #1d1d1f;
+        }
+
+        .bar-label {
+            margin-top: 20px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+            max-width: 800px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.12);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #5856d6 0%, #af52de 100%);
+            border-radius: 16px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #ff3b30 0%, #ff6b6b 100%);
+            color: white;
+            padding: 20px 60px;
+            border-radius: 50px;
+            font-size: 24px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 20px 40px rgba(255, 59, 48, 0.3);
+            transition: all 0.3s ease;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 25px 50px rgba(255, 59, 48, 0.4);
+        }
+
+        .slide-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #c4c4c6;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            width: 30px;
+            border-radius: 5px;
+            background: linear-gradient(135deg, #ff3b30 0%, #ff6b6b 100%);
+        }
+
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .icon-item {
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .icon-item:hover {
+            transform: scale(1.1);
+        }
+
+        .icon-circle {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 15px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            font-size: 48px;
+        }
+
+        .icon-label {
+            font-size: 16px;
+            font-weight: 500;
+            color: #6e6e73;
+        }
+
+        .list-container {
+            background: white;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            max-width: 600px;
+            margin: 40px auto;
+        }
+
+        .list-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .list-icon {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #ff3b30 0%, #ff6b6b 100%);
+            border-radius: 50%;
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head><body>
+    <div class="presentation-container" id="presentation">
+        <!-- Slide 1: Cover -->
+        <div class="slide">
+            <h1 style="color: #FF6B6B;">Food Stock Member Campaign</h1>
+            <h2 style="font-size: 42px; margin-bottom: 40px;">Communication & Execution Plan</h2>
+            <div class="pill pill-info">Feb 9-15 Valentine Launch + 8-Week Campaign</div>
+        </div>
+
+        <!-- Slide 2: Campaign Goals -->
+        <div class="slide">
+            <h2 style="color: #FF6B6B;">Campaign Objectives</h2>
+            <div style="margin-top: 60px; font-size: 24px; line-height: 2.2;">
+                <div class="pill pill-success" style="margin: 20px auto; width: 600px;">Drive LINE OA signups + member acquisition</div>
+                <div class="pill pill-success" style="margin: 20px auto; width: 600px;">Build customer database for future marketing</div>
+                <div class="pill pill-success" style="margin: 20px auto; width: 600px;">Increase repeat visits + foot traffic</div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Key Message -->
+        <div class="slide">
+            <h2 style="color: #4ECDC4;">Key Message</h2>
+            <h1 style="font-size: 60px; color: #4ECDC4; margin-top: 40px; background: none; -webkit-text-fill-color: unset; -webkit-background-clip: unset;">แอดไลน์ รับฟรีน้ำดื่ม</h1>
+            <h3 style="font-size: 28px; color: #666; margin-top: 30px;">Add LINE → Get FREE Water</h3>
+        </div>
+
+        <!-- Slide 4: Timeline -->
+        <div class="slide">
+            <h2 style="color: #45B7D1;">Campaign Timeline</h2>
+            <div style="margin-top: 60px; font-size: 20px; line-height: 2.4;">
+                <div style="background: white; padding: 25px; border-radius: 15px; margin: 15px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1);"><span style="color: #FF6B6B; font-weight: 700;">Feb 9:</span> Soft launch</div>
+                <div style="background: white; padding: 25px; border-radius: 15px; margin: 15px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1);"><span style="color: #4ECDC4; font-weight: 700;">Feb 10-11:</span> Campaign ramp-up</div>
+                <div style="background: white; padding: 25px; border-radius: 15px; margin: 15px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1);"><span style="color: #45B7D1; font-weight: 700;">Feb 12:</span> MyCustomer launch</div>
+                <div style="background: white; padding: 25px; border-radius: 15px; margin: 15px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1);"><span style="color: #FFA07A; font-weight: 700;">Feb 13-15:</span> Valentine push</div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Content Calendar - Facebook -->
+        <div class="slide">
+            <h2 style="color: #FFA07A;">Facebook Content Calendar</h2>
+            <div style="margin-top: 50px; font-size: 18px; line-height: 2; max-width: 800px;">
+                <div style="background: #FFF5F0; padding: 20px; border-radius: 10px; margin: 10px 0;"><span style="font-weight: 600;">Feb 9:</span> Launch announcement</div>
+                <div style="background: #FFF5F0; padding: 20px; border-radius: 10px; margin: 10px 0;"><span style="font-weight: 600;">Feb 10:</span> Video teaser - benefit</div>
+                <div style="background: #FFF5F0; padding: 20px; border-radius: 10px; margin: 10px 0;"><span style="font-weight: 600;">Feb 11:</span> Customer testimonial</div>
+                <div style="background: #FFF5F0; padding: 20px; border-radius: 10px; margin: 10px 0;"><span style="font-weight: 600;">Feb 12:</span> MyCustomer celebration</div>
+                <div style="background: #FFF5F0; padding: 20px; border-radius: 10px; margin: 10px 0;"><span style="font-weight: 600;">Feb 13-15:</span> Valentine specials</div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Message Strategy -->
+        <div class="slide">
+            <h2 style="color: #98D8C8;">Message Strategy</h2>
+            <div style="margin-top: 50px; font-size: 20px; line-height: 2.2;">
+                <div class="pill pill-info" style="margin: 15px auto; width: 700px;">Sign-Up Benefit: ฟรีน้ำ ฿10 ทันที</div>
+                <div class="pill pill-success" style="margin: 15px auto; width: 700px;">Loyalty: ทุก 5 แต้ม = น้ำฟรี</div>
+                <div class="pill pill-warning" style="margin: 15px auto; width: 700px;">Valentine: มากิน + สแกน = ได้แต้ม</div>
+                <div class="pill pill-success" style="margin: 15px auto; width: 700px;">Social Proof: 500+ สมาชิกแล้ว</div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Staff Training Script -->
+        <div class="slide">
+            <h2 style="color: #BB8FCE;">Staff Training Script</h2>
+            <div style="margin-top: 50px; font-size: 18px; line-height: 2.2; max-width: 850px; text-align: left;">
+                <div style="background: #F5F0FF; padding: 20px; border-radius: 10px; margin: 15px 0;">
+                    <span style="font-weight: 600; color: #BB8FCE;">At Cashier:</span><br>
+                    "มาสแกน QR สมัครสมาชิก ได้น้ำเปล่าฟรี!"
+                </div>
+                <div style="background: #F5F0FF; padding: 20px; border-radius: 10px; margin: 15px 0;">
+                    <span style="font-weight: 600; color: #BB8FCE;">At Refill Station:</span><br>
+                    "ขอ member code ครับ จะให้น้ำฟรี"
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Daily Operations -->
+        <div class="slide">
+            <h2 style="color: #85C1E2;">Daily Operations Workflow</h2>
+            <div style="margin-top: 50px; font-size: 20px; line-height: 2.3;">
+                <div style="background: white; padding: 25px; border-radius: 12px; margin: 15px 0; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                    <span style="color: #85C1E2; font-weight: 700;">9:00 AM:</span> Test QR code, check water
+                </div>
+                <div style="background: white; padding: 25px; border-radius: 12px; margin: 15px 0; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                    <span style="color: #85C1E2; font-weight: 700;">Throughout Day:</span> Count signups, process redemptions
+                </div>
+                <div style="background: white; padding: 25px; border-radius: 12px; margin: 15px 0; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                    <span style="color: #85C1E2; font-weight: 700;">5:00 PM:</span> Report to manager, update tracking
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Expected Results -->
+        <div class="slide">
+            <h2 style="color: #F7DC6F;">Expected Results (Feb 9-15)</h2>
+            <div class="stat-container" style="margin-top: 60px;">
+                <div class="stat-box">
+                    <div class="stat-number" style="color: #34c759;">50-100</div>
+                    <div class="stat-label">Signups</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" style="color: #ff9500;">20-40</div>
+                    <div class="stat-label">Redemptions</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" style="color: #5856d6;">90%+</div>
+                    <div class="stat-label">Data Quality</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Ready to Launch -->
+        <div class="slide">
+            <h1 style="font-size: 56px; color: #34c759; background: none; -webkit-text-fill-color: unset;">Ready to Launch</h1>
+            <h2 style="font-size: 32px; color: #666; margin-top: 30px;">Feb 9 Soft Launch</h2>
+            <div class="pill pill-success" style="margin-top: 40px; font-size: 20px;">Status: Campaign 100% Ready ✅</div>
+        </div>
+  <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const presentation = document.getElementById('presentation');
+        const dots = document.querySelectorAll('.dot');
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = 18;
+
+        // Set first slide as active immediately
+        slides[0].classList.add('active');
+
+        function updateSlide() {
+            // Smooth slide transition
+            presentation.style.transform = `translateX(-${currentSlide * 100}vw)`;
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+
+            // Remove active from all slides first
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+
+            // Add active to current slide after a small delay to trigger animations
+            setTimeout(() => {
+                slides[currentSlide].classList.add('active');
+            }, 100);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' && currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlide();
+            } else if (e.key === 'ArrowLeft' && currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        });
+
+        // Also allow clicking to advance
+        document.addEventListener('click', (e) => {
+            if (e.clientX > window.innerWidth / 2 && currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlide();
+            } else if (e.clientX <= window.innerWidth / 2 && currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        });
+    </script>
+</body>
+</html>
