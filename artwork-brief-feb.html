@@ -594,7 +594,7 @@
   .ah-tag-pink { background: #fce4e8; color: #a03d54; }
   .ah-tag-blue { background: #e8f2fb; color: #3a6fa0; }
 
-  /* ── Mockup Preview ── */
+  /* ── Mockup Preview (scaled square) ── */
   .mockup-preview {
     margin: 0 32px 24px;
     border-radius: 16px;
@@ -602,11 +602,21 @@
     background: #1a1a2e;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   }
-  .mockup-preview iframe {
+  .mockup-preview .mp-frame {
+    position: relative;
     width: 100%;
-    height: 520px;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+  }
+  .mockup-preview iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1080px;
+    height: 1080px;
     border: none;
-    display: block;
+    transform-origin: 0 0;
+    /* scale is set dynamically via JS */
   }
   .mockup-preview .mp-footer {
     padding: 12px 20px;
@@ -783,7 +793,7 @@
 
       <!-- Mockup Preview -->
       <div class="mockup-preview">
-        <iframe src="mockups-feb.html?art=1" loading="lazy"></iframe>
+        <div class="mp-frame"><iframe src="mockups-feb.html?art=1" loading="lazy"></iframe></div>
         <div class="mp-footer">
           <span>Visual Reference — 1080×1080</span>
           <a href="mockups-feb.html?art=1" target="_blank">เปิดเต็มจอ →</a>
@@ -847,7 +857,7 @@
 
       <!-- Mockup Preview -->
       <div class="mockup-preview">
-        <iframe src="mockups-feb.html?art=2" loading="lazy"></iframe>
+        <div class="mp-frame"><iframe src="mockups-feb.html?art=2" loading="lazy"></iframe></div>
         <div class="mp-footer">
           <span>Visual Reference — 1080×1080</span>
           <a href="mockups-feb.html?art=2" target="_blank">เปิดเต็มจอ →</a>
@@ -912,7 +922,7 @@
 
       <!-- Mockup Preview -->
       <div class="mockup-preview">
-        <iframe src="mockups-feb.html?art=3" loading="lazy"></iframe>
+        <div class="mp-frame"><iframe src="mockups-feb.html?art=3" loading="lazy"></iframe></div>
         <div class="mp-footer">
           <span>Visual Reference — 1080×1080</span>
           <a href="mockups-feb.html?art=3" target="_blank">เปิดเต็มจอ →</a>
@@ -1066,5 +1076,19 @@
   <a href="mockups-feb.html" target="_blank" style="color: var(--sunny); text-decoration: none;">ดู Visual Mockups ทั้ง 3 ชิ้น →</a>
 </footer>
 
+<script>
+function scaleIframes() {
+  document.querySelectorAll('.mp-frame').forEach(function(frame) {
+    var w = frame.offsetWidth;
+    var scale = w / 1080;
+    var iframe = frame.querySelector('iframe');
+    if (iframe) {
+      iframe.style.transform = 'scale(' + scale + ')';
+    }
+  });
+}
+window.addEventListener('load', scaleIframes);
+window.addEventListener('resize', scaleIframes);
+</script>
 </body>
 </html>
